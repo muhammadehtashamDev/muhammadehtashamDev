@@ -1,7 +1,9 @@
 <!-- ============================================================
      GitHub README — Muhammad Ehtasham Khan (CV layout)
-     Upload `profile.png` (and optionally your CV PDF as `CV.pdf`)
+     Upload `profile.png`, `CV.pdf` and the `playground/` folder
      to the root of this repository next to this README.
+     Then enable GitHub Pages and replace YOUR-USERNAME / YOUR-REPO
+     in the playground link below (search for "YOUR-USERNAME").
      ============================================================ -->
 
 <table width="100%">
@@ -30,6 +32,28 @@
   </tr>
 </table>
 
+<p align="center">
+  <a href="https://github.com/muhammadehtashamDev/muhammadehtashamDev/playground/">
+    <img src="https://img.shields.io/badge/▶%20TRY%20IT%20LIVE-Query%20my%20career%20with%20SQL-2E75B6?style=for-the-badge&logo=sqlite&logoColor=white&labelColor=1F3864" alt="Live SQL Playground" />
+  </a>
+  <br/>
+  <sub>A real SQLite database of my CV, running in your browser. Pick a query or write your own. No sign-up.</sub>
+</p>
+
+```sql
+-- ehtasham.db
+SELECT name, role, years_experience, specialties
+FROM   data_professionals
+WHERE  skills @> ARRAY['Oracle','PostgreSQL','Snowflake','Airflow','Power BI']
+  AND  rows_processed >= 200000000
+  AND  open_to_remote = TRUE;
+
+-- name                     | role                 | years | specialties
+-- -------------------------+----------------------+-------+------------------------------------
+-- Muhammad Ehtasham Khan   | Database Architect   |  13+  | Data Engineering, Warehousing, BI
+-- (1 row)
+```
+
 ---
 
 ## 👤 PROFESSIONAL PROFILE
@@ -49,7 +73,60 @@ Database Architect and Data Engineering professional with **13+ years** of exper
 
 ---
 
+## 🔀 HOW I BUILD DATA PLATFORMS
+
+```mermaid
+flowchart LR
+    subgraph SRC["📥 Sources"]
+        A1[(Oracle / MySQL<br/>SQL Server)]
+        A2[REST APIs<br/>& Webhooks]
+        A3[CRMs & SaaS<br/>Pipedrive · Toast]
+        A4[Files<br/>CSV · Excel]
+    end
+    subgraph ING["⚙️ Ingest & Orchestrate"]
+        B1[Airbyte]
+        B2[Python · Pandas]
+        B3{{Apache Airflow<br/>scheduling · retries}}
+    end
+    subgraph WH["🏛️ Warehouse"]
+        C1[(Snowflake)]
+        C2[(PostgreSQL)]
+        C3[(BigQuery)]
+    end
+    subgraph MOD["🧱 Model & Quality"]
+        D1[Star Schema<br/>Data Vault]
+        D2[Validation ·<br/>Dedup · Reconciliation]
+    end
+    subgraph SRV["📊 Serve"]
+        E1[Power BI · DAX]
+        E2[SSRS · Looker Studio]
+        E3[🤖 AI / LLM<br/>natural-language SQL]
+    end
+    A1 & A2 & A3 & A4 --> B1 & B2
+    B1 & B2 --> B3
+    B3 --> C1 & C2 & C3
+    C1 & C2 & C3 --> D1 --> D2
+    D2 --> E1 & E2 & E3
+```
+
+---
+
 ## 💼 PROFESSIONAL EXPERIENCE
+
+```mermaid
+gantt
+    title Career Timeline
+    dateFormat YYYY-MM
+    axisFormat %Y
+    section Telecom
+    Executive · Warid Telecom              :done, 2013-05, 2017-12
+    Expert · Jazz Telecom                  :done, 2017-01, 2018-07
+    Solution Architect · Ericsson          :done, 2019-08, 2023-02
+    section Data & BI
+    Database & BI Freelancer · Upwork      :active, 2020-09, 2026-11
+    Database Architect · Convier Solutions :active, 2023-03, 2026-11
+    Resource Specialist · SanoLiving       :done, 2025-07, 2026-09
+```
 
 <table width="100%">
 <tr><td><b>DATABASE ARCHITECT &nbsp;|&nbsp; CONVIER SOLUTIONS</b><br/><sub>Lahore, Pakistan</sub></td><td align="right" width="190"><b>Mar 2023 – Present</b></td></tr>
@@ -127,6 +204,55 @@ Representative delivery across database architecture, enterprise reporting, anal
 | **Sales & Revenue Reporting** | Structured reporting for sales performance, revenue trends, channel comparisons and management-level summaries. | `Looker Studio` `Power BI` `SQL` `Data Visualization` |
 | **Telecom Billing & Service Performance Reporting** | Reporting and operational analysis supporting billing performance, subscriber activity, service delivery and process monitoring. | `BI Reporting` `SQL` `SSRS` `Data Integration` |
 | **X Telecom** – Business Intelligence Dashboard | Supported a BI platform consolidating financial health, operational efficiency and service-performance information into decision-ready reporting. | `Business Intelligence` `Data Analytics` `Dashboard Reporting` |
+
+---
+
+## 🗄️ MY CV AS A DATA MODEL
+
+This is the schema behind the [live SQL playground](https://YOUR-USERNAME.github.io/YOUR-REPO/playground/). Try joining `projects` with `skills` to find where each tool was used.
+
+```mermaid
+erDiagram
+    COMPANIES ||--o{ EXPERIENCE : employs
+    EXPERIENCE ||--o{ ACHIEVEMENTS : delivers
+    PROJECTS ||--o{ PROJECT_SKILLS : uses
+    SKILLS ||--o{ PROJECT_SKILLS : "applied in"
+
+    COMPANIES {
+        int company_id PK
+        text company
+        text industry
+        text location
+    }
+    EXPERIENCE {
+        int exp_id PK
+        int company_id FK
+        text role
+        date start_date
+        date end_date
+        bool is_current
+    }
+    ACHIEVEMENTS {
+        int achievement_id PK
+        int exp_id FK
+        text description
+    }
+    PROJECTS {
+        int project_id PK
+        text project
+        text client
+        text category
+    }
+    SKILLS {
+        int skill_id PK
+        text skill
+        text category
+    }
+    PROJECT_SKILLS {
+        int project_id FK
+        int skill_id FK
+    }
+```
 
 ---
 
