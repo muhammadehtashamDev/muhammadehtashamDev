@@ -1,13 +1,13 @@
 <!-- ============================================================
      GitHub README — Muhammad Ehtasham Khan (CV layout)
-     Upload `profile.jpg` (and optionally your CV PDF as `CV.pdf`)
+     Upload `profile.png` (and optionally your CV PDF as `CV.pdf`)
      to the root of this repository next to this README.
      ============================================================ -->
 
 <table width="100%">
   <tr>
     <td width="170" align="center" valign="middle">
-      <img src="profile.jpg" alt="Muhammad Ehtasham Khan" width="150" style="border-radius:50%;" />
+      <img src="profile.png" alt="Muhammad Ehtasham Khan" width="160" />
     </td>
     <td valign="middle">
       <h1>MUHAMMAD EHTASHAM KHAN</h1>
