@@ -209,7 +209,7 @@ Representative delivery across database architecture, enterprise reporting, anal
 
 ## 🗄️ MY CV AS A DATA MODEL
 
-This is the schema behind the [live SQL playground](https://YOUR-USERNAME.github.io/YOUR-REPO/playground/). Try joining `projects` with `skills` to find where each tool was used.
+This is the schema behind the [live SQL playground](https://muhammadehtashamDev.github.io/muhammadehtashamDev/playground/). Try joining `projects` with `skills` to find where each tool was used.
 
 ```mermaid
 erDiagram
