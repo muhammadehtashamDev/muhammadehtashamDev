@@ -33,7 +33,7 @@
 </table>
 
 <p align="center">
-  <a href="https://github.com/muhammadehtashamDev/muhammadehtashamDev/playground/">
+  <a href="https://muhammadehtashamDev.github.io/muhammadehtashamDev/playground/">
     <img src="https://img.shields.io/badge/▶%20TRY%20IT%20LIVE-Query%20my%20career%20with%20SQL-2E75B6?style=for-the-badge&logo=sqlite&logoColor=white&labelColor=1F3864" alt="Live SQL Playground" />
   </a>
   <br/>
